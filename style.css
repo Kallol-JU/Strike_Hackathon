@@ -128,3 +128,177 @@ body {
         flex-basis: 50%;
     }
 }
+
+.features-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.feature-card{
+    background-color: #1F1F1F;
+    border: 1px solid #888888;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.feature-card:hover{
+    transform: translate(-10px) rotateX(8deg);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+}
+
+.main-header{
+    padding:1rem 2rem;
+}
+
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo{
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.5rem;
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+    gap:2rem;
+}
+
+.nav-link{
+    color:#F5F5F5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover{
+    color: #39FF14;
+}
+
+
+
+.hero-section{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:2rem;
+}
+
+.hero-title{
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 6rem;
+    letter-spacing: 5px;
+    color: #F5F5F5;
+}
+
+.hero-subtitle{
+    font-size: 1.25rem;
+    color: #888888;
+    margin-top: 1rem;
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    border: 2px solid #39FF14;
+    border-radius: 5px;
+    color: #39FF14;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover{
+    background-color: #39FF14;
+    color:#0D0D0D;
+}
+
+.quote-section{
+    padding: 4rem 1rem;
+    background-color: #1F1F1F;
+}
+
+.quote{
+    max-width:800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quote p{
+    font-size: 1.5rem;
+    font-style:italic;
+    line-height: 1.6;
+}
+
+.quote cite{
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #39FF14;
+}
+
+.main-footer{
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.main-footer .btn{
+    margin-bottom: 2rem;
+}
+
+.copyright{
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #888888;
+}
+
+@keyframes fade-up{
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.features-section{
+    padding: 4rem 1rem;
+    animation: fade-up 1s ease-out;
+}
+
+.showcase-section{
+    padding: 4rem 1rem;
+    animation: fade-up 1s ease-out 0.3s;
+    animation-fill-mode: backwards;
+}
+
+.quote-section{
+    padding:4rem 1rem;
+    background-color: #1F1F1F;
+    animation: fade-up 1s ease-out 0.6s;
+    animation-fill-mode: backwards;
+}
