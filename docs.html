@@ -30,7 +30,111 @@
     </header>
 
     <main>
+        <div class="docs-container">
+        <h1 class="section-title">Documentation</h1>
+        <div class="docs-layout">
+
+        <aside class="docs-nav">
+            <h3>Components</h3>
+            <a href="#introduction">Introduction</a>
+            <a href="#buttons">Buttons</a>
+            <a href="#cards">Cards</a>
+            <a href="#editor">Code Editor</a>
+        </aside>
+
+        <main class="docs-content">
+            <section id="introduction" class="docs-section">
+                <h2>Introduction</h2>
+                <p>Welcome to the STRIKE documentation. STRIKE is a lightweight, animation-first CSS framework designed for performance and creativity. This guide will walk you through the core components.</p>
+            </section>
+
+            <section id="buttons" class="docs-section">
+                <h2>Buttons</h2>
+                <p>Select a style to see the button and its required code snippet.</p>
+
+    <div class="component-playground">
+            <input type="radio" name="button-toggle" id="btn-primary" class="playground-checkbox" checked>
+            <input type="radio" name="button-toggle" id="btn-secondary" class="playground-checkbox">
+
+            <div class="playground-toggles">
+                <label for="btn-primary">Primary</label>
+                <label for="btn-secondary">Secondary</label>
+            </div>
+
+        <div class="playground-content">
+            <div class="playground-item" id="primary-content">
+                <div class="component-preview">
+                    <a  class="btn">Primary Button</a>
+                </div>
+                <div class="component-code">
+                    <pre><code>&lt;a href="#" class="btn"&gt;Primary Button&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="playground-item" id="secondary-content">
+                 <div class="component-preview">
+                    <a  class="btn btn-secondary">Secondary Button</a>
+                </div>
+                <div class="component-code">
+                    <pre><code>&lt;a href="#" class="btn btn-secondary"&gt;Secondary Button&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+            </section>
+
+            <section id="cards" class="docs-section">
+                <h2>Cards</h2>
+                <p>The `.feature-card` component is perfect for showcasing information.</p>
+
+            <div class="component-showcase">
+                <div class="component-preview">
+                    <div class="feature-card">
+                         <h3>Sample Card</h3>
+                         <p>This is a sample card component.</p>
+                    </div>
+                </div>
+                <div class="component-code">
+                    <input type="radio" name="card-code-toggle" id="card-html" class="code-toggle-radio" checked>
+                    <input type="radio" name="card-code-toggle" id="card-css" class="code-toggle-radio">
+
+            <div class="code-toggles">
+                <label for="card-html">HTML</label>
+                <label for="card-css">CSS</label>
+            </div>
+                 <div class="code-content">
+                <div class="code-snippet" id="card-html-content">
+                    <pre><code>&lt;div class="feature-card"&gt;
+    &lt;h3&gt;Sample Card&lt;/h3&gt;
+    &lt;p&gt;This is a sample card component.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <div class="code-snippet" id="card-css-content">
+                    <pre><code>.feature-card {
+    background-color: #1F1F1F;
+    border: 1px solid #888888;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+        </div>
+            </section>
+
+            <section id="editor" class="docs-section">
+                <h2>Code Editor</h2>
+                <p>The `.code-editor` component is great for displaying code snippets.</p>
+                </section>
         </main>
+        </div>
+        </div>
+    </main>
 
     <footer class="main-footer">
         <h2 class="section-title">Ready to Build?</h2>

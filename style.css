@@ -321,3 +321,220 @@ body {
     color: #39FF14;
     text-decoration: underline;
 }
+
+@keyframes strike-effect {
+    0% {
+        color: #39FF14; 
+        text-shadow: none;
+    }
+    50% {
+        color: #ffffff; 
+        text-shadow: 0 0 25px #ffffff, 0 0 10px #39FF14; 
+        transform: translateY(-5px) scaleY(1.1); 
+    }
+    100% {
+        color: #39FF14; 
+        text-shadow: none;
+    }
+}
+
+.hero-title-anim {
+    animation: strike-effect 2s ease-in-out infinite;
+    display: inline-block; 
+}
+
+/* Docs styling*/
+
+.docs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
+
+.docs-layout {
+    display: flex;
+    align-items: flex-start; 
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.docs-nav {
+    flex-basis: 250px; 
+    flex-shrink: 0;
+    position: sticky; 
+    top: 2rem;
+}
+
+.docs-nav h3 {
+    font-family: 'Chakra Petch', sans-serif;
+    margin-bottom: 1rem;
+    color: #888888;
+}
+
+.docs-nav a {
+    display: block; 
+    padding: 0.75rem;
+    color: #F5F5F5;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.docs-nav a:hover {
+    background-color: #1F1F1F;
+    color: #39FF14;
+}
+
+
+.docs-content {
+    flex-grow:1; 
+}
+
+.docs-section h2 {
+    font-family:"Chakra Petch", sans-serif;
+    font-size: 2rem;
+    color: #39FF14;
+    margin-bottom: 1rem;
+}
+
+.docs-section {
+    display:none;
+}
+
+.docs-section:target {
+    display: block;
+    animation: fade-up 0.5s ease-out;
+}
+
+#introduction {
+    display: block;
+}
+
+.docs-section:target ~ #introduction {
+    display: none;
+}
+
+.component-showcase {
+    margin-top: 2rem;
+    border: 1px solid #888888;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+.component-preview {
+    background-color: #0D0D0D; 
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.component-code {
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #a9b7c6;
+    background-color: #2b2b2b;
+    white-space: pre-wrap;
+    border-top: 1px solid #888888;
+}
+
+.component-playground {
+    margin-top: 2rem;
+    border: 1px solid #888888;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.playground-toggles {
+    display: flex;
+    background-color: #1F1F1F;
+    border-bottom: 1px solid #888888;
+}
+
+.playground-checkbox {
+    display: none;
+}
+
+.playground-toggles label {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #888888;
+    border-bottom: 2px solid transparent;
+}
+
+.playground-toggles input[type="radio"]:checked + label {
+    color: #39FF14;
+    border-bottom-color: #39FF14;
+}
+
+.playground-item {
+    display: none;
+}
+
+#btn-primary:checked ~ .playground-content #primary-content {
+    display: block;
+}
+
+#btn-secondary:checked ~ .playground-content #secondary-content {
+    display: block;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border-color: #888;
+    color: #F5F5F5;
+}
+
+.btn-secondary:hover {
+    background-color: #444;
+}
+
+.code-toggle-radio {
+    display: none; 
+}
+
+.code-toggles {
+    display: flex;
+    background-color: #2b2b2b;
+    border-bottom: 1px solid #888888;
+    padding: 0 1rem;
+}
+
+.code-toggles label {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #888888;
+    position: relative;
+    top: 1px; 
+}
+
+.code-toggles label:hover {
+    color: #F5F5F5;
+}
+
+.code-toggles input.code-toggle-radio:checked + label {
+
+}
+
+.code-snippet {
+    display: none;
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #a9b7c6;
+    background-color: #2b2b2b;
+    white-space: pre-wrap;
+}
+
+#card-html:checked ~ .code-toggles label[for="card-html"],
+#card-css:checked ~ .code-toggles label[for="card-css"] {
+    color: #F5F5F5;
+    border-bottom: 2px solid #39FF14;
+}
+
+#card-html:checked ~ .code-content #card-html-content {
+    display: block;
+}
+#card-css:checked ~ .code-content #card-css-content {
+    display: block;
+}
