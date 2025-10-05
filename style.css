@@ -302,3 +302,22 @@ body {
     animation: fade-up 1s ease-out 0.6s;
     animation-fill-mode: backwards;
 }
+
+.hero-sub-nav{
+    margin-top:2rem;
+    font-size:1rem;
+    color:#888888;
+}
+
+.hero-sub-nav a{
+    color: #F5F5F5;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.hero-sub-nav a:hover {
+    color: #39FF14;
+    text-decoration: underline;
+}
