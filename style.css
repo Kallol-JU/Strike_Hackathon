@@ -107,15 +107,75 @@ body {
     white-space: pre-wrap;
 }
 
-.visual-output{
+/* --- Live Showcase Code Editor Animation --- */
+.code-tag { color: #e83e8c; }
+.code-attr { color: #66d9ef; }
+.code-string { color: #a6e22e; }
+
+.typing-code-line {
+    /* Set the width to the number of characters in our new line */
+    width: 32ch; 
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #39FF14; /* The cursor */
+    font-family: 'Courier New', Courier, monospace;
+
+    /* Apply two animations: one for typing, one for the cursor */
+    animation: 
+        typing-and-deleting 5s steps(32) infinite,
+        blink 0.5s step-end infinite;
+}
+
+@keyframes typing-and-deleting {
+    /* The animation starts, types out */
+    0%   { width: 0; }
+    /* It stays fully typed for a while */
+    50%  { width: 32ch; }
+    /* It starts deleting */
+    75%  { width: 32ch; }
+    /* It is fully deleted and waits for the loop to restart */
+    100% { width: 0; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.visual-output {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+.card-slider {
+    display: flex;
+    gap: 1rem;
+    width: fit-content; 
+    animation: scroll-animation 15s linear infinite;
+}
+
+.showcase-card {
+    width: 150px;
+    height: 100px;
     background-color: #1F1F1F;
     border: 1px solid #888888;
     border-radius: 8px;
-    padding:2rem;
-    min-height: 200px;
+    
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    
+    font-family: 'Chakra Petch', sans-serif;
+    color: #aaa;
+}
+
+@keyframes scroll-animation {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 @media (min-width: 990px){
@@ -234,29 +294,50 @@ body {
     color:#0D0D0D;
 }
 
-.quote-section{
-    padding: 4rem 1rem;
+.calm-quote-section {
+    padding: 8rem 1rem;
     background-color: #1F1F1F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.quote{
-    max-width:800px;
-    margin: 0 auto;
+.reveal-quote {
+    font-size: 3rem;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
-.quote p{
-    font-size: 1.5rem;
-    font-style:italic;
-    line-height: 1.6;
+.reveal-quote span {
+    color: #F5F5F5;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: glow-in 1s ease-out forwards;
 }
 
-.quote cite{
-    display: block;
-    margin-top: 1rem;
+.reveal-quote span:nth-child(1) { animation-delay: 0.5s; }
+.reveal-quote span:nth-child(2) { animation-delay: 1.0s; }
+.reveal-quote span:nth-child(3) { animation-delay: 1.5s; }
+.reveal-quote span:nth-child(4) { animation-delay: 2.0s; }
+
+.quote-author {
+    margin-top: 2rem;
     font-style: normal;
-    font-weight: 500;
-    color: #39FF14;
+    color: #888888;
+}
+
+@keyframes glow-in {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 0 15px rgba(245, 245, 245, 0.5);
+    }
 }
 
 .main-footer{
@@ -537,7 +618,6 @@ body {
     display: block;
 }
 
-/* page:: pricing */
 
 .pricing-container {
     max-width: 1100px;
@@ -551,7 +631,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* --- The Interactive Toggle Switch --- */
 
 .pricing-toggle {
     display: flex;
@@ -595,7 +674,6 @@ body {
     transform: translateX(23px);
 }
 
-/* --- The Pricing Grid and Cards --- */
 
 .pricing-grid {
     display: flex;
@@ -603,17 +681,16 @@ body {
     justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
-    align-items: stretch; /* This makes all cards in a row equal height */
+    align-items: stretch; 
 }
 
-/* This is the main card container that sets the 3D stage */
 .price-card {
     flex-basis: 320px;
     perspective: 1500px;
-    display: flex; /* Ensures cards stretch to fill height */
+    display: flex; 
 }
 
-/* The inner wrapper is what flips and holds the content */
+
 .card-inner {
     position: relative;
     width: 100%;
@@ -627,10 +704,10 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Base styles for BOTH the front and back faces */
+
 .card-front,
 .card-back {
-    grid-area: 1 / 1 / 2 / 2; /* Stacks them in the same spot */
+    grid-area: 1 / 1 / 2 / 2; 
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     
@@ -684,7 +761,6 @@ body {
     color: #aaa;
 }
 
-/* The back face of the flipping card */
 .card-back {
     transform: rotateY(180deg);
     justify-content: center;
@@ -707,7 +783,6 @@ body {
 }
 
 
-/* --- The Toggle Price Logic --- */
 
 .yearly-price {
     display: none;
@@ -888,3 +963,4 @@ body {
         border-color: transparent;
     }
 }
+
