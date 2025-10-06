@@ -487,9 +487,106 @@ body {
     display: inline-block; 
 }
 
+/* --- Index Page: "Buzz Wall" Social Proof Section --- */
+
+.buzz-section {
+    padding: 6rem 0; /* No side padding, let the container handle it */
+}
+
+/* Add this new rule for subtitles */
+.section-subtitle {
+    text-align: center;
+    color: #888888;
+    max-width: 500px; /* Keeps the line length readable */
+    margin: -1rem auto 3rem; /* Pulls it closer to the title and adds space below */
+    line-height: 1.6;
+}
+
+/* The container acts as a "window" with faded edges */
+.buzz-wall-container {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px; /* A fixed height for the scrolling area */
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+}
+
+/* The wall is a tall column of all the posts */
+.buzz-wall {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    /* Apply the infinite vertical scroll animation */
+    animation: scroll-buzz 20s linear infinite;
+}
+
+/* Individual post styling */
+.buzz-post {
+    display: flex;
+    gap: 1rem;
+    background-color: #1F1F1F;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.buzz-post img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.post-author {
+    font-weight: 700;
+}
+
+.post-handle {
+    color: #888;
+    font-weight: 400;
+}
+
+.post-text {
+    margin-top: 0.5rem;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+.post-text strong {
+    color: #39FF14;
+    font-weight: 700;
+}
+
+/* The vertical scroll animation */
+@keyframes scroll-buzz {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        /* This moves the wall up by the height of the first set of posts */
+        transform: translateY(-50%);
+    }
+}
+
+/* --- Buzz Wall: Verified Badge Styling --- */
+
+/* 1. Make the author line a flex container for alignment */
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* Adds a small space between items */
+}
+
+/* 2. Style the SVG badge itself */
+.verified-badge {
+    width: 1em;  /* Makes the badge size relative to the font size */
+    height: 1em;
+}
 
 
-/*docs*/
+/*docs page*/
 
 .intro-layout {
     display: flex;
@@ -600,8 +697,6 @@ body {
     color: #39FF14;
     margin-bottom: 1rem;
 }
-
-/* docs page */
 
 .docs-tab-radio {
     display: none;
@@ -758,9 +853,6 @@ body {
     white-space: pre-wrap;
 }
 
-/* --- Docs Page: Code Snippet Toggle Logic --- */
-
-/* Style for the active tab label */
 #card-html:checked ~ .code-toggles label[for="card-html"],
 #card-css:checked ~ .code-toggles label[for="card-css"],
 #carousel-html:checked ~ .code-toggles label[for="carousel-html"],
@@ -769,7 +861,6 @@ body {
     border-bottom: 2px solid #39FF14;
 }
 
-/* Logic to show the correct code snippet */
 #card-html:checked ~ .code-content #card-html-content,
 #card-css:checked ~ .code-content #card-css-content,
 #carousel-html:checked ~ .code-content #carousel-html-content,
@@ -777,11 +868,7 @@ body {
     display: block;
 }
 
-/* --- Docs Page: Animated Code Snippets --- */
-
-/* 1. The container for the code */
 .component-code pre {
-    /* We can reuse the styles from our editor body! */
     padding: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
     color: #a9b7c6;
@@ -789,35 +876,26 @@ body {
     white-space: pre-wrap;
 }
 
-/* 2. The animated code line itself */
 .animated-code-block {
     display: inline-block;
-    white-space: nowrap; /* Keep it on one line for the animation */
+    white-space: nowrap; 
     overflow: hidden;
-    width: 0; /* Start with no width */
-    border-right: 3px solid #39FF14; /* The cursor */
-    
-    /* We will apply the animation using the logic below */
+    width: 0; 
+    border-right: 3px solid #39FF14; 
     animation-fill-mode: forwards;
     animation-timing-function: steps(var(--char-count));
 }
 
-/* --- 3. The Animation Trigger Logic --- */
-
-/* When Primary is selected, type out the primary code */
 #btn-primary:checked ~ .playground-content #primary-content .animated-code-block {
     animation-name: typing-A;
     animation-duration: 2s;
 }
 
-/* When Secondary is selected, type out the secondary code */
 #btn-secondary:checked ~ .playground-content #secondary-content .animated-code-block {
     animation-name: typing-B;
     animation-duration: 2.5s;
 }
 
-/* --- 4. The Keyframe Animations --- */
-/* We need two identical animations with different names to re-trigger the effect */
 
 @keyframes typing-A {
     from { width: 0; }
@@ -829,32 +907,29 @@ body {
     to { width: var(--char-count); }
 }
 
-/* --- Docs Page: Code Editor Carousel --- */
 
 .carousel-container {
     width: 100%;
     max-width: 500px;
     height: 250px;
     position: relative;
-    overflow: hidden; /* This hides the other slides */
+    overflow: hidden; 
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: #0D0D0D;
 }
 
 .carousel-radio {
-    display: none; /* Hide the radio buttons */
+    display: none; 
 }
 
-/* The track that holds all the slides */
 .carousel-slides {
     display: flex;
-    width: 300%; /* 100% for each of the 3 slides */
+    width: 300%; 
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* The smooth sliding animation */
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
 }
 
-/* Individual slides */
 .carousel-slide {
     width: 100%;
     height: 100%;
@@ -874,12 +949,11 @@ body {
 }
 
 .carousel-slide h3, .carousel-slide p {
-    opacity: 0; /* Start invisible */
+    opacity: 0; 
     transform: translateY(20px);
     transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s; /* Add a delay */
 }
 
-/* The navigation dots at the bottom */
 .carousel-nav {
     position: absolute;
     bottom: 1rem;
@@ -890,22 +964,19 @@ body {
 }
 
 .nav-dot {
-    width: 16px; /* Make them bigger */
+    width: 16px; 
     height: 16px;
     border-radius: 50%;
-    background-color: rgba(136, 136, 136, 0.5); /* Semi-transparent */
-    border: 2px solid transparent; /* Add a border for the active state */
+    background-color: rgba(136, 136, 136, 0.5); 
+    border: 2px solid transparent; 
     cursor: pointer;
-    transition: all 0.4s ease; /* Animate all properties */
+    transition: all 0.4s ease; 
 }
 
 .nav-dot:hover {
     background-color: #F5F5F5;
 }
 
-/* --- THE CAROUSEL LOGIC --- */
-
-/* Move the slider track based on which radio is checked */
 #slide1:checked ~ .carousel-slides { transform: translateX(0%); }
 #slide2:checked ~ .carousel-slides { transform: translateX(-33.333%); }
 #slide3:checked ~ .carousel-slides { transform: translateX(-66.666%); }
@@ -920,17 +991,15 @@ body {
     transform: translateY(0);
 }
 
-/* Highlight the active navigation dot */
 #slide1:checked ~ .carousel-nav label[for="slide1"],
 #slide2:checked ~ .carousel-nav label[for="slide2"],
 #slide3:checked ~ .carousel-nav label[for="slide3"] {
     background-color: transparent;
     border-color: #39FF14;
-    transform: scale(1.2); /* Make the active dot bigger */
+    transform: scale(1.2); 
 }
 
 
-/* --- Docs Page: Final Code Typing Animation --- */
 
 .code-typing-container {
     padding: 1.5rem;
@@ -939,45 +1008,30 @@ body {
     background-color: #2b2b2b;
 }
 
-/* --- The Animated First Line --- */
 .final-typing-animation {
-    /* Set width to the number of characters in the comment (45) */
     width: 45ch; 
-    white-space: nowrap; /* This ensures it's a single, clean line */
+    white-space: nowrap; 
     overflow: hidden;
-    
-    /* The blinking cursor */
     border-right: 3px solid #39FF14;
-    
-    /* The typing animation runs for 3s, and the blink runs 6 times then stops */
     animation: 
         final-typing 3s steps(45) forwards,
         blink 0.5s step-end 6 forwards;
 }
 
-/* --- The Fading Code Block --- */
 .static-code-block {
-    opacity: 0; /* Start invisible */
-    
-    /* This animation will fade the code in AFTER the typing finishes (3s delay) */
+    opacity: 0; 
     animation: fade-in-code 1s ease-out 3s forwards;
 }
 
-
-/* --- The Keyframe Animations --- */
-
-/* The keyframe for the typing effect */
 @keyframes final-typing {
     from { width: 0; }
     to { width: 45ch; }
 }
 
-/* The keyframe for the fade-in effect */
 @keyframes fade-in-code {
     to { opacity: 1; }
 }
 
-/* We can reuse the same blink animation from before */
 @keyframes blink {
     50% { border-color: transparent; }
 }
@@ -1056,9 +1110,7 @@ body {
 }
 
 .price-card:hover {
-    transform: translateY(-5px); /* Lifts the card up */
-    
-    /* Adds the soft glow */
+    transform: translateY(-5px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
