@@ -676,7 +676,7 @@ body {
     list-style: none;
     margin: 2rem 0;
     text-align: left;
-    flex-grow: 1; /* THE FIX: Pushes the button down */
+    flex-grow: 1; 
 }
 
 .card-front ul li {
@@ -859,7 +859,6 @@ body {
 }
 
 .image-placeholder {
-    /* Use flexbox to perfectly center the text inside */
     display: flex;
     justify-content: center;
     align-items: center;
