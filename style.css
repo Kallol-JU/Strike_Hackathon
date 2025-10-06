@@ -482,14 +482,87 @@ body {
 }
 
 .decode-letter {
-    /* Apply the animation, making it loop infinitely */
+    
     animation: subtle-decode 5s ease-in-out infinite;
-    display: inline-block; /* Allows transform to work */
+    display: inline-block; 
 }
 
 
 
 /*docs*/
+
+.intro-layout {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    gap: 3rem;
+}
+
+.intro-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-text p {
+    line-height: 1.8;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+.intro-visual {
+    flex: 1;
+    min-width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-scene {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.intro-shape {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate-3d 15s linear infinite;
+}
+
+.cube-2 { animation-delay: -5s; } 
+.cube-3 { animation-delay: -10s; }
+
+.intro-shape::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #39FF14;
+    opacity: 0.5;
+    transform: translateZ(-50px);
+}
+
+.intro-shape::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #66d9ef;
+    opacity: 0.5;
+    transform: rotateY(90deg) translateZ(-50px);
+}
+
+@keyframes rotate-3d {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
 
 .docs-container {
     max-width: 1200px;
@@ -517,21 +590,6 @@ body {
     color: #888888;
 }
 
-.docs-nav a {
-    display: block; 
-    padding: 0.75rem;
-    color: #F5F5F5;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.docs-nav a:hover {
-    background-color: #1F1F1F;
-    color: #39FF14;
-}
-
-
 .docs-content {
     flex-grow:1; 
 }
@@ -543,22 +601,46 @@ body {
     margin-bottom: 1rem;
 }
 
-.docs-section {
-    display:none;
+/* docs page */
+
+.docs-tab-radio {
+    display: none;
 }
 
-.docs-section:target {
+.docs-nav label {
+    display: block;
+    padding: 0.75rem;
+    color: #F5F5F5;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.docs-nav label:hover {
+    background-color: #1F1F1F;
+}
+
+#tab-intro:checked ~ .docs-nav label[for="tab-intro"],
+#tab-buttons:checked ~ .docs-nav label[for="tab-buttons"],
+#tab-cards:checked ~ .docs-nav label[for="tab-cards"],
+#tab-editor:checked ~ .docs-nav label[for="tab-editor"] {
+    color: #39FF14;
+    background-color: #1F1F1F;
+}
+
+.docs-section {
+    display: none;
+}
+
+#tab-intro:checked ~ .docs-content #introduction,
+#tab-buttons:checked ~ .docs-content #buttons,
+#tab-cards:checked ~ .docs-content #cards,
+#tab-editor:checked ~ .docs-content #editor {
     display: block;
     animation: fade-up 0.5s ease-out;
 }
 
-#introduction {
-    display: block;
-}
-
-.docs-section:target ~ #introduction {
-    display: none;
-}
 
 .component-showcase {
     margin-top: 2rem;
@@ -607,6 +689,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
     color: #888888;
     border-bottom: 2px solid transparent;
+}
+
+.playground-toggles label:hover {
+    color: #F5F5F5; 
 }
 
 .playground-toggles input[type="radio"]:checked + label {
@@ -672,20 +758,231 @@ body {
     white-space: pre-wrap;
 }
 
+/* --- Docs Page: Code Snippet Toggle Logic --- */
+
+/* Style for the active tab label */
 #card-html:checked ~ .code-toggles label[for="card-html"],
-#card-css:checked ~ .code-toggles label[for="card-css"] {
+#card-css:checked ~ .code-toggles label[for="card-css"],
+#carousel-html:checked ~ .code-toggles label[for="carousel-html"],
+#carousel-css:checked ~ .code-toggles label[for="carousel-css"] {
     color: #F5F5F5;
     border-bottom: 2px solid #39FF14;
 }
 
-#card-html:checked ~ .code-content #card-html-content {
-    display: block;
-}
-#card-css:checked ~ .code-content #card-css-content {
+/* Logic to show the correct code snippet */
+#card-html:checked ~ .code-content #card-html-content,
+#card-css:checked ~ .code-content #card-css-content,
+#carousel-html:checked ~ .code-content #carousel-html-content,
+#carousel-css:checked ~ .code-content #carousel-css-content {
     display: block;
 }
 
+/* --- Docs Page: Animated Code Snippets --- */
 
+/* 1. The container for the code */
+.component-code pre {
+    /* We can reuse the styles from our editor body! */
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #a9b7c6;
+    background-color: #2b2b2b;
+    white-space: pre-wrap;
+}
+
+/* 2. The animated code line itself */
+.animated-code-block {
+    display: inline-block;
+    white-space: nowrap; /* Keep it on one line for the animation */
+    overflow: hidden;
+    width: 0; /* Start with no width */
+    border-right: 3px solid #39FF14; /* The cursor */
+    
+    /* We will apply the animation using the logic below */
+    animation-fill-mode: forwards;
+    animation-timing-function: steps(var(--char-count));
+}
+
+/* --- 3. The Animation Trigger Logic --- */
+
+/* When Primary is selected, type out the primary code */
+#btn-primary:checked ~ .playground-content #primary-content .animated-code-block {
+    animation-name: typing-A;
+    animation-duration: 2s;
+}
+
+/* When Secondary is selected, type out the secondary code */
+#btn-secondary:checked ~ .playground-content #secondary-content .animated-code-block {
+    animation-name: typing-B;
+    animation-duration: 2.5s;
+}
+
+/* --- 4. The Keyframe Animations --- */
+/* We need two identical animations with different names to re-trigger the effect */
+
+@keyframes typing-A {
+    from { width: 0; }
+    to { width: var(--char-count); }
+}
+
+@keyframes typing-B {
+    from { width: 0; }
+    to { width: var(--char-count); }
+}
+
+/* --- Docs Page: Code Editor Carousel --- */
+
+.carousel-container {
+    width: 100%;
+    max-width: 500px;
+    height: 250px;
+    position: relative;
+    overflow: hidden; /* This hides the other slides */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #0D0D0D;
+}
+
+.carousel-radio {
+    display: none; /* Hide the radio buttons */
+}
+
+/* The track that holds all the slides */
+.carousel-slides {
+    display: flex;
+    width: 300%; /* 100% for each of the 3 slides */
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* The smooth sliding animation */
+}
+
+/* Individual slides */
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    
+    /* The "Glassmorphism" Effect */
+    background: rgba(31, 31, 31, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+}
+
+.carousel-slide h3, .carousel-slide p {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s; /* Add a delay */
+}
+
+/* The navigation dots at the bottom */
+.carousel-nav {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.nav-dot {
+    width: 16px; /* Make them bigger */
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgba(136, 136, 136, 0.5); /* Semi-transparent */
+    border: 2px solid transparent; /* Add a border for the active state */
+    cursor: pointer;
+    transition: all 0.4s ease; /* Animate all properties */
+}
+
+.nav-dot:hover {
+    background-color: #F5F5F5;
+}
+
+/* --- THE CAROUSEL LOGIC --- */
+
+/* Move the slider track based on which radio is checked */
+#slide1:checked ~ .carousel-slides { transform: translateX(0%); }
+#slide2:checked ~ .carousel-slides { transform: translateX(-33.333%); }
+#slide3:checked ~ .carousel-slides { transform: translateX(-66.666%); }
+
+#slide1:checked ~ .carousel-slides .carousel-slide:nth-child(1) h3,
+#slide1:checked ~ .carousel-slides .carousel-slide:nth-child(1) p,
+#slide2:checked ~ .carousel-slides .carousel-slide:nth-child(2) h3,
+#slide2:checked ~ .carousel-slides .carousel-slide:nth-child(2) p,
+#slide3:checked ~ .carousel-slides .carousel-slide:nth-child(3) h3,
+#slide3:checked ~ .carousel-slides .carousel-slide:nth-child(3) p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Highlight the active navigation dot */
+#slide1:checked ~ .carousel-nav label[for="slide1"],
+#slide2:checked ~ .carousel-nav label[for="slide2"],
+#slide3:checked ~ .carousel-nav label[for="slide3"] {
+    background-color: transparent;
+    border-color: #39FF14;
+    transform: scale(1.2); /* Make the active dot bigger */
+}
+
+
+/* --- Docs Page: Final Code Typing Animation --- */
+
+.code-typing-container {
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #a9b7c6;
+    background-color: #2b2b2b;
+}
+
+/* --- The Animated First Line --- */
+.final-typing-animation {
+    /* Set width to the number of characters in the comment (45) */
+    width: 45ch; 
+    white-space: nowrap; /* This ensures it's a single, clean line */
+    overflow: hidden;
+    
+    /* The blinking cursor */
+    border-right: 3px solid #39FF14;
+    
+    /* The typing animation runs for 3s, and the blink runs 6 times then stops */
+    animation: 
+        final-typing 3s steps(45) forwards,
+        blink 0.5s step-end 6 forwards;
+}
+
+/* --- The Fading Code Block --- */
+.static-code-block {
+    opacity: 0; /* Start invisible */
+    
+    /* This animation will fade the code in AFTER the typing finishes (3s delay) */
+    animation: fade-in-code 1s ease-out 3s forwards;
+}
+
+
+/* --- The Keyframe Animations --- */
+
+/* The keyframe for the typing effect */
+@keyframes final-typing {
+    from { width: 0; }
+    to { width: 45ch; }
+}
+
+/* The keyframe for the fade-in effect */
+@keyframes fade-in-code {
+    to { opacity: 1; }
+}
+
+/* We can reuse the same blink animation from before */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* pricing page */
 .pricing-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -776,30 +1073,22 @@ body {
 
 }
 
-/* --- Add this new block for the 3D hover effect --- */
-
 .price-card:hover .card-inner {
-    /* This makes the card bigger AND brings it forward in 3D space */
     transform: scale(1.05) translateZ(30px);
-    
-    /* This adds the vibrant green glow */
     box-shadow: 0 25px 50px rgba(57, 255, 20, 0.3);
 }
 
-/* This makes sure the flip still works when you click WHILE hovering */
 .flip-toggle:checked + .card-inner {
     transform: rotateY(180deg);
 }
 
 .price-card:hover .flip-toggle:checked + .card-inner {
-    /* This combines both effects: it stays popped out AND flips */
     transform: scale(1.05) translateZ(30px) rotateY(180deg);
 }
 
 .flip-toggle:checked + .card-inner {
     transform: rotateY(180deg);
 }
-
 
 .card-front,
 .card-back {

@@ -22,6 +22,7 @@
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
+                  
                     <a href="docs.html" class="nav-link">Docs</a>
                 </li>
                 <li class="nav-item">
@@ -38,105 +39,202 @@
         <div class="docs-container">
         <h1 class="section-title">Documentation</h1>
         <div class="docs-layout">
+            
+            <input type="radio" name="docs-tab" id="tab-intro" class="docs-tab-radio" checked>
+            <input type="radio" name="docs-tab" id="tab-buttons" class="docs-tab-radio">
+            <input type="radio" name="docs-tab" id="tab-cards" class="docs-tab-radio">
+            <input type="radio" name="docs-tab" id="tab-editor" class="docs-tab-radio">
 
-        <aside class="docs-nav">
-            <h3>Components</h3>
-            <a href="#introduction">Introduction</a>
-            <a href="#buttons">Buttons</a>
-            <a href="#cards">Cards</a>
-            <a href="#editor">Code Editor</a>
-        </aside>
+           
+            <aside class="docs-nav">
+                <h3>Components</h3>
+                <label for="tab-intro">Introduction</label>
+                <label for="tab-buttons">Buttons</label>
+                <label for="tab-cards">Cards</label>
+                <label for="tab-editor">Code Editor</label>
+            </aside>
 
-        <main class="docs-content">
-            <section id="introduction" class="docs-section">
-                <h2>Introduction</h2>
-                <p>Welcome to the STRIKE documentation. STRIKE is a lightweight, animation-first CSS framework designed for performance and creativity. This guide will walk you through the core components.</p>
-            </section>
-
-            <section id="buttons" class="docs-section">
-                <h2>Buttons</h2>
-                <p>Select a style to see the button and its required code snippet.</p>
-
-    <div class="component-playground">
-            <input type="radio" name="button-toggle" id="btn-primary" class="playground-checkbox" checked>
-            <input type="radio" name="button-toggle" id="btn-secondary" class="playground-checkbox">
-
-            <div class="playground-toggles">
-                <label for="btn-primary">Primary</label>
-                <label for="btn-secondary">Secondary</label>
-            </div>
-
-        <div class="playground-content">
-            <div class="playground-item" id="primary-content">
-                <div class="component-preview">
-                    <a  class="btn">Primary Button</a>
-                </div>
-                <div class="component-code">
-                    <pre><code>&lt;a href="#" class="btn"&gt;Primary Button&lt;/a&gt;</code></pre>
-                </div>
-            </div>
-
-            <div class="playground-item" id="secondary-content">
-                 <div class="component-preview">
-                    <a  class="btn btn-secondary">Secondary Button</a>
-                </div>
-                <div class="component-code">
-                    <pre><code>&lt;a href="#" class="btn btn-secondary"&gt;Secondary Button&lt;/a&gt;</code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-            </section>
-
-            <section id="cards" class="docs-section">
-                <h2>Cards</h2>
-                <p>The `.feature-card` component is perfect for showcasing information.</p>
-
-            <div class="component-showcase">
-                <div class="component-preview">
-                    <div class="feature-card">
-                         <h3>Sample Card</h3>
-                         <p>This is a sample card component.</p>
+            <main class="docs-content">
+                <section id="introduction" class="docs-section">
+                    <div class="intro-layout">
+                         <div class="intro-text">
+                            <h2>Introduction</h2>
+                            <p><strong>STRIKE is an animation-first CSS framework for the modern web.</strong> It's a lightweight, performance-driven toolkit designed to help you create stunning, fluid user interfaces with zero JavaScript.</p>
+                            <p>My core belief is that constraint fuels creativity. By embracing the power of pure CSS, we can build experiences that are not only beautiful but also incredibly fast and maintainable.</p>
+                            <p>This documentation is your practical guide. On the left, you'll find the core components. Each section provides a live preview and the ready-to-use code snippets you need to bring your vision to life.</p>
+                        </div>
+                        <div class="intro-visual">
+                           <div class="intro-scene">
+                                <div class="intro-shape cube-1"></div>
+                                <div class="intro-shape cube-2"></div>
+                                <div class="intro-shape cube-3"></div>
+                           </div>
+                        </div>
                     </div>
-                </div>
-                <div class="component-code">
-                    <input type="radio" name="card-code-toggle" id="card-html" class="code-toggle-radio" checked>
-                    <input type="radio" name="card-code-toggle" id="card-css" class="code-toggle-radio">
-
-            <div class="code-toggles">
-                <label for="card-html">HTML</label>
-                <label for="card-css">CSS</label>
-            </div>
-                 <div class="code-content">
-                <div class="code-snippet" id="card-html-content">
-                    <pre><code>&lt;div class="feature-card"&gt;
+                </section>
+                <section id="buttons" class="docs-section">
+                    <h2>Buttons</h2>
+                    <p>Select a style to see the button and its required code snippet.</p>
+                    <div class="component-playground">
+                        <input type="radio" name="button-toggle" id="btn-primary" class="playground-checkbox" checked>
+                        <input type="radio" name="button-toggle" id="btn-secondary" class="playground-checkbox">
+                        <div class="playground-toggles">
+                            <label for="btn-primary">Primary</label>
+                            <label for="btn-secondary">Secondary</label>
+                        </div>
+                        <div class="playground-content">
+                            <div class="playground-item" id="primary-content">
+                                <div class="component-preview">
+                                    <a href="#!" class="btn">Primary Button</a>
+                                </div>
+                                <div class="component-code">
+                                    <pre><code class="animated-code-block" style="--char-count: 42ch">&lt;a href="#" class="btn"&gt;Primary Button&lt;/a&gt;</code></pre>
+                                </div>
+                            </div>
+                            <div class="playground-item" id="secondary-content">
+                               <div class="component-preview">
+                                    <a href="#!" class="btn btn-secondary">Secondary Button</a>
+                                </div>
+                                <div class="component-code">
+                                    <pre><code class="animated-code-block" style="--char-count: 58ch">&lt;a href="#" class="btn btn-secondary"&gt;Secondary Button&lt;/a&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="cards" class="docs-section">
+                    <h2>Cards</h2>
+                    <p>This is sample component and it's required code snippet.</p>
+                    <div class="component-showcase">
+                        <div class="component-preview">
+                            <div class="feature-card">
+                                 <h3>Sample Card</h3>
+                                 <p>This is a sample card component.</p>
+                            </div>
+                        </div>
+                        <div class="component-code">
+                            <input type="radio" name="card-code-toggle" id="card-html" class="code-toggle-radio" checked>
+                            <input type="radio" name="card-code-toggle" id="card-css" class="code-toggle-radio">
+                            <div class="code-toggles">
+                                <label for="card-html">HTML</label>
+                                <label for="card-css">CSS</label>
+                            </div>
+                           <div class="code-content">
+                                <div class="code-snippet" id="card-html-content">
+                                    <pre><code>&lt;div class="feature-card"&gt;
     &lt;h3&gt;Sample Card&lt;/h3&gt;
     &lt;p&gt;This is a sample card component.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
-                </div>
-                <div class="code-snippet" id="card-css-content">
-                    <pre><code>.feature-card {
+                                </div>
+                                <div class="code-snippet" id="card-css-content">
+                                    <pre><code>.feature-card {
     background-color: #1F1F1F;
     border: 1px solid #888888;
     border-radius: 12px;
     padding: 2rem;
-    text-align: center;
     transition: transform 0.3s ease;
 }
 .feature-card:hover {
     transform: translateY(-10px);
 }</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+<section id="editor" class="docs-section">
+                    <h2>Component: Carousel</h2>
+    <p>A lightweight, responsive, and fully interactive carousel built with zero JavaScript. Controlled entirely by CSS selectors and state.</p>
+  
+    <div class="component-showcase">
+        <div class="component-preview">
+          
+            <div class="carousel-container">
+              
+                <input type="radio" name="carousel-slide" id="slide1" class="carousel-radio" checked>
+                <input type="radio" name="carousel-slide" id="slide2" class="carousel-radio">
+                <input type="radio" name="carousel-slide" id="slide3" class="carousel-radio">
+
+                
+                <div class="carousel-slides">
+                 
+                    <div class="carousel-slide">
+                        <h3>Animation-First</h3>
+                        <p>Built from the ground up for fluid, performant animations.</p>
+                    </div>
+                  
+                    <div class="carousel-slide">
+                        <h3>Featherlight</h3>
+                        <p>Add power, not weight. The entire framework is just a few kilobytes.</p>
+                    </div>
+                
+                    <div class="carousel-slide">
+                        <h3>Pure CSS</h3>
+                        <p>Embrace the power of constraint. No JavaScript, ever.</p>
+                    </div>
+                </div>
+
+             
+                <div class="carousel-nav">
+                    <label for="slide1" class="nav-dot"></label>
+                    <label for="slide2" class="nav-dot"></label>
+                    <label for="slide3" class="nav-dot"></label>
                 </div>
             </div>
         </div>
-        </div>
-            </section>
+        <div class="component-code">
+         
+           
+           <input type="radio" name="carousel-code-toggle" id="carousel-html" class="code-toggle-radio" checked>
+    <input type="radio" name="carousel-code-toggle" id="carousel-css" class="code-toggle-radio">
 
-            <section id="editor" class="docs-section">
-                <h2>Code Editor</h2>
-                <p>The `.code-editor` component is great for displaying code snippets.</p>
-                </section>
-        </main>
+    <div class="code-toggles">
+        <label for="carousel-html">HTML</label>
+        <label for="carousel-css">CSS</label>
+    </div>
+
+   
+    <div class="code-content">
+        
+        <div class="code-snippet" id="carousel-html-content">
+            <pre><code>&lt;!-- The HTML for the STRIKE Carousel --&gt;
+&lt;div class="carousel-container"&gt;
+    &lt;div class="carousel-slides"&gt;
+        &lt;div class="carousel-slide"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="carousel-nav"&gt;
+        &lt;label for="slide1"&gt;&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+       
+        <div class="code-snippet" id="carousel-css-content">
+            <pre><code>
+
+.carousel-radio { display: none; }
+
+#slide1:checked ~ .carousel-slides {
+    transform: translateX(0%);
+}
+#slide2:checked ~ .carousel-slides {
+    transform: translateX(-33.333%);
+}
+
+#slide1:checked ~ .carousel-nav label[for="slide1"] {
+    background-color: #39FF14;
+}</code></pre>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+</section>
+            </main>
         </div>
         </div>
     </main>
@@ -145,17 +243,17 @@
         <h2 class="section-title">
         Ready to 
         <div class="word-carousel-wrapper">
-        <ul class="word-carousel">
-            <li>Build?</li>
-            <li>Design?</li>
-            <li>Launch?</li>
-            <li>Ship!</li>
-        </ul>
+            <ul class="word-carousel">
+                <li>Build?</li>
+                <li>Design?</li>
+                <li>Launch?</li>
+                <li>Ship!</li>
+            </ul>
         </div>
         </h2>
         <a href="https://github.com/Kallol-JU/Strike_Hackathon" class="btn btn-secondary">View on Github</a>
         <p class="copyright">&copy; 2025 STRIKE. A Hackathon Project.</p>
     </footer>
-    
 </body>
 </html>
+
