@@ -343,8 +343,6 @@ body {
     display: inline-block; 
 }
 
-/* Docs styling*/
-
 .docs-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -537,4 +535,199 @@ body {
 }
 #card-css:checked ~ .code-content #card-css-content {
     display: block;
+}
+
+/* page:: pricing */
+
+.pricing-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.pricing-subtitle {
+    color: #888888;
+    margin-bottom: 2rem;
+}
+
+/* --- The Interactive Toggle Switch --- */
+
+.pricing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pricing-checkbox {
+    display: none;
+}
+
+.pricing-label {
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    background-color: #333;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pricing-label::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    top: 3px;
+    left: 4px;
+    transition: transform 0.3s ease;
+}
+
+.pricing-checkbox:checked + .pricing-label {
+    background-color: #39FF14;
+}
+
+.pricing-checkbox:checked + .pricing-label::before {
+    transform: translateX(23px);
+}
+
+/* --- The Pricing Grid and Cards --- */
+
+.pricing-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: stretch; /* This makes all cards in a row equal height */
+}
+
+/* This is the main card container that sets the 3D stage */
+.price-card {
+    flex-basis: 320px;
+    perspective: 1500px;
+    display: flex; /* Ensures cards stretch to fill height */
+}
+
+/* The inner wrapper is what flips and holds the content */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    display: grid;
+}
+
+.flip-toggle:checked + .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Base styles for BOTH the front and back faces */
+.card-front,
+.card-back {
+    grid-area: 1 / 1 / 2 / 2; /* Stacks them in the same spot */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    background-color: #1F1F1F;
+    border: 1px solid #888888;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.price-card.popular .card-front,
+.price-card.popular .card-back {
+    border-color: #39FF14;
+}
+
+.card-front h3 {
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-front .price {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Chakra Petch", sans-serif;
+    color: #39FF14;
+}
+
+.card-front .price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888888;
+    font-family: "Poppins", sans-serif;
+}
+
+.card-front ul {
+    list-style: none;
+    margin: 2rem 0;
+    text-align: left;
+    flex-grow: 1; /* THE FIX: Pushes the button down */
+}
+
+.card-front ul li {
+    margin-bottom: 1rem;
+    color: #aaa;
+}
+
+/* The back face of the flipping card */
+.card-back {
+    transform: rotateY(180deg);
+    justify-content: center;
+}
+
+.card-back h3 {
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.75rem;
+}
+
+.card-back h4 {
+    margin-top: 1rem;
+    color: #888;
+}
+
+.card-back p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* --- The Toggle Price Logic --- */
+
+.yearly-price {
+    display: none;
+}
+
+.pricing-checkbox:checked ~ .pricing-grid .monthly-price {
+    display: none;
+}
+
+.pricing-checkbox:checked ~ .pricing-grid .yearly-price {
+    display: block;
+}
+
+.flip-toggle {
+    display: none;
+}
+
+.flip-instruction {
+    margin-top: 3rem; 
+    color: #888888;   
+    font-size: 0.9rem; 
+    font-style: italic;
 }

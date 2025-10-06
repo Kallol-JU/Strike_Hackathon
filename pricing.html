@@ -10,26 +10,106 @@
     <header class="main-header">
         <nav class="navbar">
             <a href="index.html" class="nav-logo">STRIKE</a>
-
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="docs.html" class="nav-link">Docs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pricing.html" class="nav-link">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="docs.html" class="nav-link">Docs</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        </main>
+        <div class="pricing-container">
+            <h1 class="section-title">Pricing Plans</h1>
+            <p class="pricing-subtitle">Choose the plan that's right for you. Switch to yearly for a 20% discount.</p>
+
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <input type="checkbox" id="pricing-switch" class="pricing-checkbox">
+                <label for="pricing-switch" class="pricing-label"></label>
+                <span>Yearly</span>
+            </div>
+
+            <div class="pricing-grid">
+    <!-- Card 1: Free -->
+    <div class="price-card">
+        <!-- Hidden checkbox to control the flip state -->
+        <input type="checkbox" id="flip-toggle-free" class="flip-toggle">
+        <div class="card-inner">
+            <label class="card-front" for="flip-toggle-free">
+                <h3>Free</h3>
+                <div class="price monthly-price">$0 <span>/ month</span></div>
+                <div class="price yearly-price">$0 <span>/ year</span></div>
+                <ul>
+                    <li>✓ Core Components</li>
+                    <li>✓ Standard Animations</li>
+                    <li>- Priority Support</li>
+                    <li>- Premium Animations</li>
+                </ul>
+                <a href="#!" class="btn btn-secondary">Get Started</a>
+            </label>
+            <label class="card-back" for="flip-toggle-free">
+                <h3>Hobby Plan</h3>
+                <h4>Who is this for?</h4>
+                <p>Perfect for students, hobbyists, and anyone looking to experiment with STRIKE on personal projects.</p>
+            </label>
+        </div>
+    </div>
+
+    <!-- Card 2: Pro -->
+    <div class="price-card popular">
+        <input type="checkbox" id="flip-toggle-pro" class="flip-toggle">
+        <div class="card-inner">
+            <label class="card-front" for="flip-toggle-pro">
+                <h3>Pro</h3>
+                <div class="price monthly-price">$12 <span>/ month</span></div>
+                <div class="price yearly-price">$115 <span>/ year</span></div>
+                <ul>
+                    <li>✓ Core Components</li>
+                    <li>✓ Standard Animations</li>
+                    <li>✓ Priority Support</li>
+                    <li>✓ Premium Animations</li>
+                </ul>
+                <a href="#!" class="btn">Choose Pro</a>
+            </label>
+            <label class="card-back" for="flip-toggle-pro">
+                <h3>Pro Plan</h3>
+                <h4>What to expect:</h4>
+                <p>Unlock the full potential of STRIKE with premium animations and dedicated support for your professional projects.</p>
+            </label>
+        </div>
+    </div>
+
+    <!-- Card 3: Enterprise -->
+    <div class="price-card">
+        <input type="checkbox" id="flip-toggle-enterprise" class="flip-toggle">
+        <div class="card-inner">
+            <label class="card-front" for="flip-toggle-enterprise">
+                <h3>Enterprise</h3>
+                <div class="price monthly-price">Contact Us</div>
+                <div class="price yearly-price">Contact Us</div>
+                <ul>
+                    <li>✓ Everything in Pro</li>
+                    <li>✓ Team Licenses</li>
+                    <li>✓ Dedicated Support</li>
+                    <li>✓ Custom Integrations</li>
+                </ul>
+                <a href="#!" class="btn btn-secondary">Contact Sales</a>
+            </label>
+            <label class="card-back" for="flip-toggle-enterprise">
+                <h3>Enterprise Plan</h3>
+                <h4>Built for Scale</h4>
+                <p>Custom solutions, team-wide licenses, and dedicated support for large-scale applications and organizations.</p>
+            </label>
+        </div>
+    </div>
+</div>
+        <div class="flip-instruction">
+            <p>✨ Tip: Click any card to flip it and learn more.</p>
+        </div>
+        </div>
+    </main>
 
     <footer class="main-footer">
         <h2 class="section-title">Ready to Build?</h2>
@@ -38,3 +118,4 @@
     </footer>
 </body>
 </html>
+
