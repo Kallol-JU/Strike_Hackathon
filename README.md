@@ -42,6 +42,7 @@ To run this project locally:
 
 Author
 Kallol Mukherjee
+
 **live link : https://strike-kallol.netlify.app**
 
 X : https://x.com/KallolM69942175
