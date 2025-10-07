@@ -45,6 +45,8 @@ Kallol Mukherjee
 
 **live link : https://strike-kallol.netlify.app**
 
+![STRIKE Project Demo](images/strike-demo.gif)
+
 X : https://x.com/KallolM69942175
 
 This project was built with love and passion for the Coder Army CSS Hackathon. Thank you for the challenge Rohit sir and Aditya sir!!!
