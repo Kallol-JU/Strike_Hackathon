@@ -487,43 +487,37 @@ body {
     display: inline-block; 
 }
 
-/* --- Index Page: "Buzz Wall" Social Proof Section --- */
+/* the social proof section --- */
 
 .buzz-section {
-    padding: 6rem 0; /* No side padding, let the container handle it */
+    padding: 6rem 0; 
 }
 
-/* Add this new rule for subtitles */
 .section-subtitle {
     text-align: center;
     color: #888888;
-    max-width: 500px; /* Keeps the line length readable */
-    margin: -1rem auto 3rem; /* Pulls it closer to the title and adds space below */
+    max-width: 500px; 
+    margin: -1rem auto 3rem; 
     line-height: 1.6;
 }
 
-/* The container acts as a "window" with faded edges */
 .buzz-wall-container {
     max-width: 600px;
     margin: 0 auto;
-    height: 400px; /* A fixed height for the scrolling area */
+    height: 400px; 
     overflow: hidden;
     position: relative;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
 }
 
-/* The wall is a tall column of all the posts */
 .buzz-wall {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    
-    /* Apply the infinite vertical scroll animation */
-    animation: scroll-buzz 20s linear infinite;
+    animation: scroll-buzz 20s linear infinite; /*the main infinite one*/
 }
 
-/* Individual post styling */
 .buzz-post {
     display: flex;
     gap: 1rem;
@@ -559,32 +553,29 @@ body {
     font-weight: 700;
 }
 
-/* The vertical scroll animation */
 @keyframes scroll-buzz {
     from {
         transform: translateY(0);
     }
     to {
-        /* This moves the wall up by the height of the first set of posts */
         transform: translateY(-50%);
     }
 }
 
-/* --- Buzz Wall: Verified Badge Styling --- */
-
-/* 1. Make the author line a flex container for alignment */
 .post-author {
     display: flex;
     align-items: center;
-    gap: 0.25rem; /* Adds a small space between items */
+    gap: 0.25rem; 
 }
 
-/* 2. Style the SVG badge itself */
 .verified-badge {
-    width: 1em;  /* Makes the badge size relative to the font size */
+    width: 1em;  
     height: 1em;
 }
 
+.static-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.475);
+}
 
 /*docs page*/
 
