@@ -270,13 +270,22 @@ body {
 }
 
 .hero-title{
+    position: relative; 
     font-family: "Chakra Petch", sans-serif;
     font-size: 6rem;
     letter-spacing: 5px;
     color: #F5F5F5;
+    white-space: nowrap; 
 }
 
-
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 4rem; 
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
 
 .hero-subtitle{
     font-size: 1.25rem;
